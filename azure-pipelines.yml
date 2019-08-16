@@ -32,7 +32,7 @@ stages:
               Write-Output "Organization is set to $(ORGANIZATION)"
               Write-Output "Repository $(DEVOPS-MODULE-REPOSITORY) registered"
               Import-Module ShortenURL -Force
-              $newURL = New-PrivateURL -Url "https://dev.azure.com/tfsreturnone/$(System.TeamProject)/_git/$(Build.Repository.ID)/commit/$(Build.SourceVersion)/" `
+              $newURL = New-PrivateURL -Url "https://dev.azure.com/$(ORGANIZATION)/$(System.TeamProject)/_git/$(Build.Repository.ID)/commit/$(Build.SourceVersion)/" `
               -FunctionURL $(FUNCTION-URL) -Key $(FUNCTION-KEY) -Verbose
               echo "##vso[task.setvariable variable=newURL;isOutput=true]$newURL"
       - script: echo $(New_URL.newURL)
